@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,51 +22,74 @@
             android:gravity="right"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/decBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#605F5F"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="0dp"
-                android:text="-"
-                android:textColor="#DDD9D9"
-                android:textSize="20sp"
-                app:cornerRadius="0dp" />
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/numOfPlayerTV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#605F5F"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="0dp"
-                android:text="1"
-                android:textColor="#DDD9D9"
-                android:textSize="20sp"
-                app:cornerRadius="30dp" />
+                <ImageButton
+                    android:id="@+id/settingsBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="#605F5F"
+                    android:src="@android:drawable/ic_menu_manage" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/incBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#605F5F"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="0dp"
-                android:text="+"
-                android:textColor="#DDD9D9"
-                android:textSize="20sp"
-                app:cornerRadius="0dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/decBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#605F5F"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="0dp"
+                    android:text="-"
+                    android:textColor="#DDD9D9"
+                    android:textSize="20sp"
+                    app:cornerRadius="0dp" />
+
+                <TextView
+                    android:id="@+id/numOfPlayerTV"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#605F5F"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="0dp"
+                    android:text="1"
+                    android:textColor="#DDD9D9"
+                    android:textSize="20sp"
+                    app:cornerRadius="30dp" />
+
+                <Button
+                    android:id="@+id/incBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#605F5F"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="0dp"
+                    android:text="+"
+                    android:textColor="#DDD9D9"
+                    android:textSize="20sp"
+                    app:cornerRadius="0dp" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <com.example.playerselector.CustomView
+        <com.example.playerselector.Views.TouchView
             android:id="@+id/drawView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

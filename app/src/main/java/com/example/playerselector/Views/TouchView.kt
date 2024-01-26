@@ -1,48 +1,21 @@
-package com.example.playerselector
+package com.example.playerselector.Views
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import com.example.playerselector.databinding.ActivityMainBinding
+import com.example.playerselector.COUNT_DOWN_INTERVAL
+import com.example.playerselector.Classes.Finger
+import com.example.playerselector.MIN_NUMBER_OF_CIRCLES_TO_START_SELECTION
+import com.example.playerselector.TIME_TO_CHOOSE_MILLISECONDS
+import com.example.playerselector.Activities.mainBinding
+import com.example.playerselector.Activities.touchCircle
 import kotlin.math.min
 
-lateinit var binding: ActivityMainBinding
-
-var toDraw = true
-
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.incBtn.setOnClickListener {
-            var curNumberOfPlayers = binding.numOfPlayerTV.text.toString().toInt()
-            if (curNumberOfPlayers < MAX_NUM_OF_PLAYER) {
-                ++curNumberOfPlayers
-                binding.numOfPlayerTV.text = curNumberOfPlayers.toString()
-            }
-        }
-        binding.decBtn.setOnClickListener {
-            var curNumberOfPlayers = binding.numOfPlayerTV.text.toString().toInt()
-            if (curNumberOfPlayers > MIN_NUM_OF_PLAYER) {
-                --curNumberOfPlayers
-                binding.numOfPlayerTV.text = curNumberOfPlayers.toString()
-            }
-        }
-    }
-}
-
-class Finger(var index: Int, var id: Int, var x: Float, var y: Float)
-
-class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class TouchView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private var areFingersChosen = false
 
     private var timer: CountDownTimer? = null
@@ -71,22 +44,20 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     public override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        if (!toDraw) return
-
         val paint = Paint()
         listOfFingers.forEach {
             if (chosenFingers.contains(it)) {
-                paint.color = SELECTED_CIRCLE_COLOR
+                paint.color = touchCircle.selectedCircleColor
             }
             else {
                 if (areFingersChosen) {
-                    paint.color = UNSELECTED_CIRCLE_COLOR
+                    paint.color = touchCircle.unselectedCircleColor
                 }
                 else {
-                    paint.color = TOUCH_CIRCLE_COLOR
+                    paint.color = touchCircle.touchCircleColor
                 }
             }
-            canvas.drawCircle(it.x, it.y, CIRCLE_RADIUS, paint)
+            canvas.drawCircle(it.x, it.y, touchCircle.circleRadius, paint)
         }
         refresh()
     }
@@ -113,7 +84,7 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     private fun chooseFinger() {
         selectNRandomNumbersInRange(
             listOfFingers.size,
-            binding.numOfPlayerTV.text.toString().toInt()
+            mainBinding.numOfPlayerTV.text.toString().toInt()
         ).forEach {
             chosenFingers.add(listOfFingers[it])
         }
