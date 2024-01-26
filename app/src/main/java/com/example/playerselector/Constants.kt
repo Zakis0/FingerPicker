@@ -13,7 +13,7 @@ const val CIRCLE_RADIUS: Float = 100f
 
 var TOUCH_CIRCLE_COLOR = Color.parseColor("#8E8888")
 var SELECTED_CIRCLE_COLOR = Color.parseColor("#FF9122")
-var UNSELECTED_CIRCLE_COLOR = Color.parseColor("#8E8888")
+var UNSELECTED_CIRCLE_COLOR = Color.parseColor("#3E3838")
 
 // Constants
 const val MIN_NUMBER_OF_CIRCLES_TO_START_SELECTION = 2
