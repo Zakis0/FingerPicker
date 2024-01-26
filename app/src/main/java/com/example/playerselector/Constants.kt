@@ -30,8 +30,8 @@ val colorsList = listOf(
 const val DEFAULT_CIRCLE_RADIUS: Float = 100f
 
 val DEFAULT_TOUCH_CIRCLE_COLOR = colorsList[6]
-val DEFAULT_SELECTED_CIRCLE_COLOR = colorsList[3]
-val DEFAULT_UNSELECTED_CIRCLE_COLOR = colorsList[0]
+val DEFAULT_SELECTED_CIRCLE_COLOR = colorsList[0]
+val DEFAULT_UNSELECTED_CIRCLE_COLOR = colorsList[2]
 
 // Color type names
 enum class ColorTypes(val string: String) {

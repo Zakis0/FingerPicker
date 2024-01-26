@@ -20,6 +20,8 @@ import com.example.playerselector.SAVE_TABLE
 import com.example.playerselector.SAVE_TOUCH_COLOR
 import com.example.playerselector.SAVE_UNSELECTED_COLOR
 import com.example.playerselector.Classes.TouchCircle
+import com.example.playerselector.Views.chosenFingers
+import com.example.playerselector.Views.listOfFingers
 import com.example.playerselector.databinding.ActivityMainBinding
 
 lateinit var mainBinding: ActivityMainBinding
@@ -91,6 +93,8 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
+        listOfFingers.clear()
+        chosenFingers.clear()
         saveData()
     }
 }

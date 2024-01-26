@@ -15,13 +15,13 @@ import com.example.playerselector.Activities.mainBinding
 import com.example.playerselector.Activities.touchCircle
 import kotlin.math.min
 
+var listOfFingers = mutableListOf<Finger>()
+var chosenFingers = mutableListOf<Finger>()
+
 class TouchView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private var areFingersChosen = false
 
     private var timer: CountDownTimer? = null
-
-    private var listOfFingers = mutableListOf<Finger>()
-    private var chosenFingers = mutableListOf<Finger>()
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val index = event.actionIndex
