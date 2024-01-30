@@ -29,11 +29,14 @@ class TouchView(context: Context?, attrs: AttributeSet?) : View(context, attrs) 
         val cX = event.getX(index)
         val cY = event.getY(index)
         when {
-            event.action == MotionEvent.ACTION_DOWN || (event.action % 256 == MotionEvent.ACTION_POINTER_DOWN) -> {
+            event.action == MotionEvent.ACTION_DOWN ||
+                    (event.action % 256 == MotionEvent.ACTION_POINTER_DOWN) -> {
                 listOfFingers.add(Finger(index, id, cX, cY))
                 changedNumberOfFingers()
             }
-            event.action == MotionEvent.ACTION_UP || (event.action % 256 == MotionEvent.ACTION_POINTER_UP) -> {
+            event.action == MotionEvent.ACTION_CANCEL ||
+                    event.action == MotionEvent.ACTION_UP ||
+                    (event.action % 256 == MotionEvent.ACTION_POINTER_UP) -> {
                 listOfFingers.removeIf {it.id == id}
                 changedNumberOfFingers()
             }
